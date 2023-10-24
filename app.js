@@ -25,10 +25,7 @@ app.set('trust proxy', 1)
 app.use(
   rateLimiter({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
-    standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
-    legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
-    // store: ... , // Use an external store for consistency across multiple server instances.
+    limit: 100,
   })
 )
 
@@ -37,7 +34,7 @@ app.use(cors())
 app.use(xss())
 
 app.get('/', (req, res) => {
-  res.send('<h1>Jobs API</h1> <a href="/api-docs">API Documentation</a>')
+  res.send('<h1>Jobs API</h1><a href="/api-docs">API Documentation</a>')
 })
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
