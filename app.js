@@ -42,7 +42,7 @@ app.use('/api/v1/jobs', authMiddleware, jobsRouter)
 app.use(errorHandlerMiddleware)
 app.use(notFoundMiddleware)
 
-const port = 3000 || process.env.PORT
+const port = process.env.PORT || 3000
 
 const start = async () => {
   await connectDB(process.env.MONGO_URI)
