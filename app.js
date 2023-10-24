@@ -22,12 +22,12 @@ const jobsRouter = require('./routes/jobs')
 app.use(express.json())
 
 app.set('trust proxy', 1)
-// app.use(
-//   rateLimiter({
-//     windowMs: 15 * 60 * 4 * 1000,
-//     limit: 100,
-//   })
-// )
+app.use(
+  rateLimiter({
+    windowMs: 15 * 60 * 1000,
+    limit: 100,
+  })
+)
 
 app.use(helmet())
 app.use(cors())
