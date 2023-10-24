@@ -24,7 +24,7 @@ app.use(express.json())
 app.set('trust proxy', 1)
 app.use(
   rateLimiter({
-    windowMs: 15 * 60 * 1000, // 15 minutes
+    windowMs: 15 * 60 * 4 * 1000, // 15 minutes
     limit: 100,
   })
 )
